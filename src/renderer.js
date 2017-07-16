@@ -49,15 +49,16 @@ document.onkeydown = function(e) {
 
 function collapseLeft() {
     for (var i = 0; i < currentGrid.length; i++) {
-        for (var j = currentGrid[i].length; j > 0; j++) {
+        for (var j = currentGrid[i].length; j > 0; j--) {
             if (currentGrid[i][j] == currentGrid[i][j - 1]) {
                 currentGrid[i][j - 1] = (currentGrid[i][j - 1] * 2);
+                currentGrid[i][j] = 0;
             } else if (currentGrid[i][j - 1] == 0) {
                 currentGrid[i][j - 1] = currentGrid[i][j];
+                currentGrid[i][j] = 0;
             }
         }
     }
-    console.log(currentGrid);
 }
 
 function collapseUp() {
