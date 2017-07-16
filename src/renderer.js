@@ -114,6 +114,15 @@ function collapseDown() {
 
 }
 
+function insertNewValue() {
+    var randomSpace = randBetween(0, 15);
+    console.log(randomSpace);
+}
+
+function randBetween(low, high) {
+    return Math.floor(Math.random() * high) + low;
+}
+
 function random_item(items) {
     return items[Math.floor(Math.random() * items.length)];
 }
