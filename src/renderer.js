@@ -99,5 +99,17 @@ function collapseRight() {
 }
 
 function collapseDown() {
+    for (var i = 0; i < currentGrid.length - 1; i++) {
+        for (var j = 0; j < currentGrid[i].length - 1; j++) {
+            if (currentGrid[i][j] == currentGrid[i + 1][j]) {
+                currentGrid[i + 1][j] = (currentGrid[i + 1][j] * 2);
+                currentGrid[i][j] = 0;
+            } else if (currentGrid[i + 1][j] == 0) {
+                console.log(currentGrid[i][j]);
+                currentGrid[i + 1][j] = currentGrid[i][j];
+                currentGrid[i][j] = 0;
+            }
+        }
+    }
 
 }
