@@ -58,6 +58,9 @@ function collapseLeft() {
                 currentGrid[i][j] = 0;
             }
         }
+        currentGrid[i] = currentGrid[i].filter(function(element) {
+            return element !== undefined;
+        });
     }
 }
 
