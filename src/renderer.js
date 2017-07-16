@@ -82,7 +82,20 @@ function collapseUp() {
 }
 
 function collapseRight() {
-
+    for (var i = 0; i < currentGrid.length - 1; i++) {
+        for (var j = 0; j < currentGrid[i].length; j++) {
+            if (currentGrid[i][j] == currentGrid[i][j + 1]) { //if same
+                currentGrid[i][j + 1] = (currentGrid[i][j + 1] * 2);
+                currentGrid[i][j] = 0;
+            } else if (currentGrid[i][j + 1] == 0) {
+                currentGrid[i][j + 1] = currentGrid[i][j];
+                currentGrid[i][j] = 0;
+            }
+        }
+        currentGrid[i] = currentGrid[i].filter(function(element) {
+            return element !== undefined;
+        }); //hackish way to remove undefined elements
+    }
 }
 
 function collapseDown() {
