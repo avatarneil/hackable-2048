@@ -66,7 +66,7 @@ function collapseLeft() {
 
 function collapseUp() {
     for (var i = currentGrid.length - 1; i > 0; i--) {
-        for (var j = currentGrid[i].length - 1; i > 0; i--) {
+        for (var j = currentGrid[i].length - 1; j > 0; j--) {
             if (currentGrid[i][j] == currentGrid[i - 1][j]) { //if same
                 currentGrid[i - 1][j] = (currentGrid[i - 1][j] * 2);
                 currentGrid[i][j] = 0;
