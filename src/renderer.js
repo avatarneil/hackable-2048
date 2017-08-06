@@ -128,3 +128,16 @@ function randBetween(low, high) {
 function random_item(items) {
     return items[Math.floor(Math.random() * items.length)];
 }
+
+function repopulateGrid(){
+    var box = document.createElement("div");
+    for (var i = 0; i <= 3; i++) {
+        for (var j=0; j<=3; j++){
+        box.setAttribute("class", "grid-item");
+        box.textContent = currentGrid[i][j];
+        box.setAttribute("value", currentGrid[i][j]);
+        grid.appendChild(box);
+        console.log(i,j);
+        }
+    }
+}
