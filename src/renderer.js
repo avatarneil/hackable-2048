@@ -11,6 +11,8 @@ function createBaseGrid() {
 function populateGrid() {
     var popCount = 0;
     var tempArray = [];
+    while (popCount < 2){
+    grid.innerHTML = "";
     for (var i = 0; i < 16; i++) {
         var randNum = Math.random();
         console.log(randNum);
@@ -28,7 +30,10 @@ function populateGrid() {
         tempArray.push(box.textContent);
     }
     while (tempArray.length) currentGrid.push(tempArray.splice(0, 4));
+    }
 }
+
+
 
 document.onkeydown = function(e) {
     switch (e.keyCode) {
