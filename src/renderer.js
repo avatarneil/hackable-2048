@@ -34,15 +34,19 @@ document.onkeydown = function(e) {
     switch (e.keyCode) {
         case 37:
             collapseLeft();
+            repopulateGrid();
             break;
         case 38:
             collapseUp();
+            repopulateGrid();
             break;
         case 39:
             collapseRight();
+            repopulateGrid();
             break;
         case 40:
             collapseDown();
+            repopulateGrid();
             break;
     }
 };
@@ -130,14 +134,18 @@ function random_item(items) {
 }
 
 function repopulateGrid(){
-    var box = document.createElement("div");
+    grid.innerHTML = "";
     for (var i = 0; i <= 3; i++) {
         for (var j=0; j<=3; j++){
+        var box = document.createElement("div");
         box.setAttribute("class", "grid-item");
         box.textContent = currentGrid[i][j];
         box.setAttribute("value", currentGrid[i][j]);
+        box.setAttribute("i",i);
+        box.setAttribute("j",j);
         grid.appendChild(box);
         console.log(i,j);
+        console.log(currentGrid[i][j]);
         }
     }
 }
