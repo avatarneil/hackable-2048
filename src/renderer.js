@@ -36,13 +36,13 @@ document.onkeydown = function(e) {
             collapseLeft();
             break;
         case 38:
-            alert('up');
+            collapseUp();
             break;
         case 39:
-            alert('right');
+            collapseRight();
             break;
         case 40:
-            alert('down');
+            collapseDown();
             break;
     }
 };
@@ -65,8 +65,8 @@ function collapseLeft() {
 }
 
 function collapseUp() {
-    for (var i = currentGrid.length - 1; i > 0; i--) {
-        for (var j = currentGrid[i].length - 1; j > 0; j--) {
+    for (var i = currentGrid.length-1; i > 0; i--) {
+        for (var j = currentGrid[i].length -1; j >= 0; j--) {
             if (currentGrid[i][j] == currentGrid[i - 1][j]) { //if same
                 currentGrid[i - 1][j] = (currentGrid[i - 1][j] * 2);
                 currentGrid[i][j] = 0;
@@ -74,6 +74,7 @@ function collapseUp() {
                 currentGrid[i - 1][j] = currentGrid[i][j];
                 currentGrid[i][j] = 0;
             }
+            console.log(i,j);
         }
         currentGrid[i] = currentGrid[i].filter(function(element) {
             return element !== undefined;
@@ -82,7 +83,7 @@ function collapseUp() {
 }
 
 function collapseRight() {
-    for (var i = 0; i < currentGrid.length - 1; i++) {
+    for (var i = 0; i < currentGrid.length; i++) {
         for (var j = 0; j < currentGrid[i].length; j++) {
             if (currentGrid[i][j] == currentGrid[i][j + 1]) { //if same
                 currentGrid[i][j + 1] = (currentGrid[i][j + 1] * 2);
@@ -91,6 +92,7 @@ function collapseRight() {
                 currentGrid[i][j + 1] = currentGrid[i][j];
                 currentGrid[i][j] = 0;
             }
+            console.log(i,j);
         }
         currentGrid[i] = currentGrid[i].filter(function(element) {
             return element !== undefined;
@@ -99,16 +101,16 @@ function collapseRight() {
 }
 
 function collapseDown() {
-    for (var i = 0; i < currentGrid.length - 1; i++) {
-        for (var j = 0; j < currentGrid[i].length - 1; j++) {
+    for (var i = 0; i < currentGrid.length-1; i++) {
+        for (var j = 0; j < currentGrid[i].length; j++) {
             if (currentGrid[i][j] == currentGrid[i + 1][j]) {
                 currentGrid[i + 1][j] = (currentGrid[i + 1][j] * 2);
                 currentGrid[i][j] = 0;
             } else if (currentGrid[i + 1][j] == 0) {
-                console.log(currentGrid[i][j]);
                 currentGrid[i + 1][j] = currentGrid[i][j];
                 currentGrid[i][j] = 0;
             }
+            console.log(i,j);
         }
     }
 
