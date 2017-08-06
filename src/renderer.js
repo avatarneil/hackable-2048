@@ -15,7 +15,6 @@ function populateGrid() {
     grid.innerHTML = "";
     for (var i = 0; i < 16; i++) {
         var randNum = Math.random();
-        console.log(randNum);
         var box = document.createElement("div");
         box.setAttribute("class", "grid-item");
         if (randNum < .2 && popCount < 2) {
@@ -39,18 +38,22 @@ document.onkeydown = function(e) {
     switch (e.keyCode) {
         case 37:
             collapseLeft();
+            insertNewValue();
             repopulateGrid();
             break;
         case 38:
             collapseUp();
+            insertNewValue();
             repopulateGrid();
             break;
         case 39:
             collapseRight();
+            insertNewValue();
             repopulateGrid();
             break;
         case 40:
             collapseDown();
+            insertNewValue();
             repopulateGrid();
             break;
     }
@@ -83,7 +86,6 @@ function collapseUp() {
                 currentGrid[i - 1][j] = currentGrid[i][j];
                 currentGrid[i][j] = 0;
             }
-            console.log(i,j);
         }
         currentGrid[i] = currentGrid[i].filter(function(element) {
             return element !== undefined;
@@ -101,7 +103,6 @@ function collapseRight() {
                 currentGrid[i][j + 1] = currentGrid[i][j];
                 currentGrid[i][j] = 0;
             }
-            console.log(i,j);
         }
         currentGrid[i] = currentGrid[i].filter(function(element) {
             return element !== undefined;
@@ -119,15 +120,28 @@ function collapseDown() {
                 currentGrid[i + 1][j] = currentGrid[i][j];
                 currentGrid[i][j] = 0;
             }
-            console.log(i,j);
         }
     }
 
 }
 
 function insertNewValue() {
-    var randomSpace = randBetween(0, 15);
-    console.log(randomSpace);
+    var counter = 0;
+    var completeCheck = false;
+    while (completeCheck == false){
+        var randomSpace = randBetween(0, 15);
+        for (var i=0;i<=3;i++){
+            for (var j=0;j<=3;j++){
+                if (counter == randomSpace){
+                    if (currentGrid[i][j] == 0){
+                        currentGrid[i][j] = 2;
+                        completeCheck = true;
+                    }
+                }
+                counter++;
+            }
+        }
+    }
 }
 
 function randBetween(low, high) {
@@ -146,11 +160,7 @@ function repopulateGrid(){
         box.setAttribute("class", "grid-item");
         box.textContent = currentGrid[i][j];
         box.setAttribute("value", currentGrid[i][j]);
-        box.setAttribute("i",i);
-        box.setAttribute("j",j);
         grid.appendChild(box);
-        console.log(i,j);
-        console.log(currentGrid[i][j]);
         }
     }
 }
