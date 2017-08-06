@@ -1,3 +1,7 @@
+body {
+    background-color:black;
+}
+
 #grid {
     margin-left: 10%;
     width: 80%;
@@ -8,7 +12,7 @@
     display: inline-block;
     text-align: center;
     width: 19%;
-    background: red;
+    background: seagreen;
     margin: 1%;
     padding-top: 5%;
     padding-bottom: 5%;
